@@ -1,6 +1,8 @@
 // api/chat.js
 import OpenAI from "openai";
 
+console.log("API KEY détectée :", process.env.OPENAI_API_KEY ? "OUI" : "NON");
+
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
