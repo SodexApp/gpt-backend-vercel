@@ -1,9 +1,5 @@
 {
   "version": 2,
-  "dependencies": {
-    "openai": "^4.27.0"
-    },
-  "type": "module",
   "builds": [{ "src": "api/chat.js", "use": "@vercel/node" }],
   "routes": [{ "src": "/api/chat", "dest": "api/chat.js" }]
 }
