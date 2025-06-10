@@ -8,13 +8,23 @@ const openai = new OpenAI({
 });
 
 export default async function handler(req, res) {
+
+    console.log("✅ Clé OpenAI détectée :", !!process.env.OPENAI_API_KEY);
+
+  
   if (req.method !== 'POST') {
+
+     console.log("⛔ Mauvaise méthode :", req.method);
     res.setHeader('Allow', ['POST']);
     return res.status(405).end("Method Not Allowed");
   }
 
   const { prompt } = req.body;
+
+   console.log("📥 Prompt reçu :", prompt);
   if (!prompt) {
+
+      console.log("❌ Prompt manquant !");  
     return res.status(400).json({ error: "Missing 'prompt' in body" });
   }
 
@@ -29,6 +39,8 @@ export default async function handler(req, res) {
     });
 
     const reply = chat.choices?.[0]?.message?.content ?? "";
+    console.log("🗣️ Réponse GPT :", reply);
+    
     // Activer les CORS pour ton front (si nécessaire)
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
