@@ -41,7 +41,7 @@ export default async function handler(req, res) {
   try {
     // Appel à l'API Chat Completions
     const chat = await openai.chat.completions.create({
-      model: "gpt-4o-turbo",   // ou le modèle de ton choix
+      model: "gpt-4o",   // ou le modèle de ton choix
       messages: [
         { role: "system", content: "Tu es un assistant pédagogique pour le nettoyage professionnel." },
         { role: "user", content: prompt }
