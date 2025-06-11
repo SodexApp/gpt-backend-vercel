@@ -31,8 +31,8 @@ export default async function handler(req, res) {
 
   const { messages} = req.body;
 
-   console.log("📥 Prompt reçu :", prompt);
-  if (!prompt) {
+   console.log("📥 Prompt reçu :", messages);
+  if (!messages) {
 
       console.log("❌ Prompt manquant !");  
     return res.status(400).json({ error: "Missing 'prompt' in body" });
