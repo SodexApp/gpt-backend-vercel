@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     return res.status(405).end("Method Not Allowed");
   }
 
-  const { prompt } = req.body;
+  const { messages} = req.body;
 
    console.log("📥 Prompt reçu :", prompt);
   if (!prompt) {
@@ -42,10 +42,7 @@ export default async function handler(req, res) {
     // Appel à l'API Chat Completions
     const chat = await openai.chat.completions.create({
       model: "gpt-4o",   // ou le modèle de ton choix
-      messages: [
-        { role: "system", content: "Tu es un assistant pédagogique pour le nettoyage professionnel." },
-        { role: "user", content: prompt }
-      ]
+      messages: messages
     });
 
     const reply = chat.choices?.[0]?.message?.content ?? "";
